@@ -1,22 +1,55 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+class IndexPage extends React.Component {
+  render() {
+    const { data } = this.props;
+    //const blogTitle = data.site.siteMetadata.title;
+    //const authorName = data.site.siteMetadata.author;
+    const posts = data.allMarkdownRemark.edges;
+
+    return (
+      <Layout>
+        <SEO title="Home"/>
+        {posts.map((post, index) => {
+          return (
+            <div key={index}>
+              <h2>{post.node.frontmatter.title}</h2>
+              <p>{post.node.frontmatter.date}</p>
+              <p>{post.node.excerpt}</p>
+              <Link to={post.node.fields.slug}>
+                <button>Read more</button>
+              </Link>
+            </div>
+          )
+        })}
+      </Layout>
+    )
+  }
+}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+    query {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+            edges {
+                node {
+                    excerpt
+                    fields {
+                        slug
+                    }
+                    html
+                    frontmatter {
+                        date(formatString: "MMMM DD, YYYY")
+                        title
+                        description
+                    }
+                }
+            }
+        }
+    }
+`
