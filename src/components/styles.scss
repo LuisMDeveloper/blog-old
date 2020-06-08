@@ -3,13 +3,24 @@ $body-color: #5E5C7F;
 $header-bg: #353353;
 
 $theme-colors: (
-  "primary": #5E5C7F
+  "primary": $body-color
 );
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+body, html {
+  height: 100vh;
+  #___gatsby {
+    height: 100vh;
+    #gatsby-focus-wrapper {
+      height: 100vh;
+    }
+  }
+}
+
 #main {
   padding-top: 56px + 36px;
+  min-height: 60%;
 }
 
 #header-navbar {
@@ -28,6 +39,12 @@ $theme-colors: (
     #footer-about-me {
       margin-left: 36px;
     }
+  }
+  #copyright {
+    padding-bottom: 16px;
+    padding-top: 16px;
+    a {color: white;}
+    a:hover {color: white;}
   }
 }
 
@@ -82,4 +99,8 @@ $theme-colors: (
     padding-top: 4.5rem;
     padding-bottom: 4.5rem;
   }
+}
+
+.carousel-caption, .card-img-overlay {
+  color: #FFD15C;
 }

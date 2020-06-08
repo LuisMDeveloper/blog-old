@@ -20,19 +20,24 @@ class PostTemplate extends React.Component {
             <div className="col">
               <div className="card border-light">
                 {/*<img src="https://via.placeholder.com/1200x500" className="card-img-top" alt="..."/>*/}
-                <Img fluid={featuredImage.childImageSharp.fluid} className="card-img-top"/>
+                <div className="row">
+                  <div className="col">
+                    <Img fluid={featuredImage.childImageSharp.fluid} className="card-img-top"/>
+                    <div className="card-img-overlay text-center d-flex flex-column justify-content-center">
+                      <h1>
+                        {post.frontmatter.title}
+                      </h1>
+                      <p><i className={`fab ${post.frontmatter.topicIcon} fa-3x`}></i></p>
+                    </div>
+                  </div>
+                </div>
                 <div className="card-body">
-                  <br/>
-                  <h2 className="card-title">Serving Remote Optimized Images w/ gatsby-image w/o GraphQL</h2>
-                  <br/>
                   <div className="card-subtitle mb-2 d-flex post-subtitle">
                     <h5>Luis Manuel Ramirez Vargas</h5>
-                    <div className="post-subtitle-social-icons">
-                      <a href="https://twitter.com/LuisMDeveloper"><i className="fab fa-twitter fa-lg"></i></a>
-                      <a href="https://github.com/LuisMDeveloper"><i className="fab fa-github fa-lg"></i></a>
-                    </div>
                     <span>{date}</span>
-                    <a href="#"><i className="fas fa-code"></i> Get the Code</a>
+                    {post.frontmatter.codeLink && (
+                      <a href={post.frontmatter.codeLink} target="_blank"><i className="fas fa-code"></i> Get the Code</a>
+                    )}
                   </div>
                   <br/>
                   <div className="card-text" dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -72,6 +77,8 @@ export const pageQuery = graphql`
                 date(formatString: "MMMM DD, YYYY")
                 subtitle
                 description
+                topicIcon
+                codeLink
                 featuredImage {
                     childImageSharp {
                         fluid(maxWidth: 800, quality: 100) {

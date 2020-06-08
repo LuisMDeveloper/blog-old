@@ -22,8 +22,14 @@ class IndexPage extends React.Component {
                 <div className="col">
                   <div className="card border-light">
                     <div className="row no-gutters">
-                      <div className="col-xl-4 col-lg-5 d-none d-xl-block d-lg-block" style={{height: "calc(100% - 6px);"}}>
+                      <div className="col-xl-4 col-lg-5 d-none d-xl-block d-lg-block">
                         <img src={post.node.frontmatter.thumbnail.childImageSharp.fixed.src} className="card-img" alt="..."/>
+                        <div className="carousel-caption">
+                          <h2>
+                            <i className={`fab ${post.node.frontmatter.topicIcon} fa-3x`}></i>
+                          </h2>
+                          <p>{post.node.frontmatter.topic}</p>
+                        </div>
                       </div>
                       <div className="col-xl-8 col-lg-7">
                         <div className="card-body">
@@ -32,8 +38,7 @@ class IndexPage extends React.Component {
                           <p className="card-text">
                             {post.node.excerpt}
                           </p>
-                          <Link to={post.node.fields.slug} className="card-link">Read More</Link>
-                          <a href="/" className="card-link">Code</a>
+                          <Link to={post.node.fields.slug} className="btn btn-primary">Read More <i className="fas fa-chevron-right"></i></Link>
                         </div>
                       </div>
                     </div>
@@ -64,6 +69,8 @@ export const pageQuery = graphql`
                         date(formatString: "MMMM DD, YYYY")
                         title
                         description
+                        topic
+                        topicIcon
                         thumbnail {
                             childImageSharp {
                                 fixed(width: 375, height: 250) {
