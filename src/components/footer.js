@@ -28,8 +28,8 @@ const Footer = () => {
             <Img fixed={data.profilePic.childImageSharp.fixed} className="img-thumbnail rounded-circle"/>
           </div>
           <div className="footer-social d-flex justify-content-center">
-            <a href="https://twitter.com/LuisMDeveloper"><i className="fab fa-twitter fa-2x"></i></a>
-            <a href="https://github.com/LuisMDeveloper"><i className="fab fa-github fa-2x"></i></a>
+            <a href="https://twitter.com/LuisMDeveloper"><i className="fab fa-twitter fa-2x"/></a>
+            <a href="https://github.com/LuisMDeveloper"><i className="fab fa-github fa-2x"/></a>
           </div>
         </div>
         <div className="col-9">

@@ -36,7 +36,7 @@ class PostTemplate extends React.Component {
                     <h5>Luis Manuel Ramirez Vargas</h5>
                     <span>{date}</span>
                     {post.frontmatter.codeLink && (
-                      <a href={post.frontmatter.codeLink} target="_blank"><i className="fas fa-code"></i> Get the Code</a>
+                      <a href={post.frontmatter.codeLink} target="_blank" rel="noreferrer"><i className="fas fa-code"></i> Get the Code</a>
                     )}
                   </div>
                   <br/>
