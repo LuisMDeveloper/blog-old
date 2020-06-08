@@ -1,0 +1,85 @@
+$body-bg: #F9F9FF;
+$body-color: #5E5C7F;
+$header-bg: #353353;
+
+$theme-colors: (
+  "primary": #5E5C7F
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+#main {
+  padding-top: 56px + 36px;
+}
+
+#header-navbar {
+  background-color: $header-bg;
+}
+
+#footer {
+  color: $body-bg;
+  background-color: $header-bg;
+  min-height: 50px;
+
+  .container {
+    padding-bottom: 150px;
+    padding-top: 50px;
+
+    #footer-about-me {
+      margin-left: 36px;
+    }
+  }
+}
+
+#skill-badges {
+  span {
+    margin-right: 8px;
+  }
+}
+
+.skill {
+  margin-bottom: 8px;
+}
+
+.footer-social {
+  margin-top: 16px;
+
+  a {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}
+
+.post-subtitle {
+  & > * {
+    margin-right: 16px;
+  }
+
+  .post-subtitle-social-icons {
+    & > * {
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+  }
+}
+
+.row.post {
+  margin-bottom: 50px;
+}
+
+.icon-row {
+  i {
+    margin-right: 8px;
+  }
+}
+
+.profile-jumbotron {
+  padding-top: 56px;
+  margin-bottom: 50px;
+  background-color: #8eb8e5;
+
+  .container {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}

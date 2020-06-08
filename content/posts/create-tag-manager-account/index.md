@@ -3,6 +3,8 @@ title: Setting Up a Tag Manager Account
 subtitle: Track Events on Your Site
 description: Learn how to set up a Google Tag Manager account
 date: 2019-06-11
+featuredImage: "./mac-img.jpg"
+thumbnail: "./thumbnail_mac-img.jpg"
 ---
 
 If you’ve been following my course 'Hands-On Web Development with React and GatsbyJS' then this is the post you’ll need to follow so you can set up your Tag Manager (TM) account and update your `gatsby-config` file. For those of you who aren’t following the course, this post will still be beneficial to you if you’ve never set up a Tag Manager account and are looking for some guidance. Just make sure you have already created a Google Analytics account and added the necessary tracking to your codebase.
@@ -47,3 +49,19 @@ Copy the GTM ID from the bar along the top of your screen from the TM dashboard.
 Go to your 'gatsby-config' file, scroll down to where we added the `gatsby-plugin-googletagmanager` and paste that ID into the `id` field.
 
 ![Update Config](./update-config.png)
+
+```javascript{numberLines: true}
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        `gatsby-remark-prismjs`,
+      ]
+    }
+  }
+]
+```
+
+end.
