@@ -67,8 +67,9 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
-    />
+      ].concat(meta)}>
+      <script src="https://kit.fontawesome.com/71255fa6bc.js" crossOrigin="anonymous"/>
+    </Helmet>
   )
 }
 
