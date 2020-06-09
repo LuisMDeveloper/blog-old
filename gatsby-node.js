@@ -16,7 +16,6 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               frontmatter {
                 title
-                subtitle
                 description
               }
               fields {

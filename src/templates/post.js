@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from 'gatsby';
 import Img from "gatsby-image"
+import { DiscussionEmbed } from "disqus-react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,18 +9,20 @@ import SEO from "../components/seo"
 class PostTemplate extends React.Component {
   render() {
     const frontmatter = this.props.data.markdownRemark.frontmatter;
-    const { title, subtitle, description, date, featuredImage } = frontmatter;
+    const { title, description, date, featuredImage } = frontmatter;
     const post = this.props.data.markdownRemark;
     const { previous, next, slug } = this.props.pageContext;
-
+    const disqusConfig = {
+      shortname: process.env.GATSBY_DISQUS_NAME,
+      config: { identifier: slug, title },
+    }
     return (
-      <Layout title={title} subtitle={subtitle}>
+      <Layout title={title}>
         <SEO title={title} description={description || post.excerpt} slug={slug}/>
         <div className="container">
           <div className="row">
             <div className="col">
               <div className="card border-light">
-                {/*<img src="https://via.placeholder.com/1200x500" className="card-img-top" alt="..."/>*/}
                 <div className="row">
                   <div className="col">
                     <Img fluid={featuredImage.childImageSharp.fluid} className="card-img-top"/>
@@ -53,6 +56,7 @@ class PostTemplate extends React.Component {
                       </Link>
                     )}
                   </div>
+                  <DiscussionEmbed {...disqusConfig} />
                 </div>
               </div>
               <br/>
@@ -75,7 +79,6 @@ export const pageQuery = graphql`
             frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
-                subtitle
                 description
                 topicIcon
                 codeLink
