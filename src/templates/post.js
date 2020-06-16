@@ -27,7 +27,7 @@ class PostTemplate extends React.Component {
                   <div className="col">
                     <Img fluid={featuredImage.childImageSharp.fluid} className="card-img-top"/>
                     <div className="card-img-overlay text-center d-flex flex-column justify-content-center">
-                      <h1>
+                      <h1 className="d-none d-sm-block">
                         {post.frontmatter.title}
                       </h1>
                       <p><i className={`fab ${post.frontmatter.topicIcon} fa-3x`}></i></p>
@@ -35,7 +35,8 @@ class PostTemplate extends React.Component {
                   </div>
                 </div>
                 <div className="card-body">
-                  <div className="card-subtitle mb-2 d-flex post-subtitle">
+                  <h2 className="card-title d-block d-sm-none">{post.frontmatter.title}</h2>
+                  <div className="card-subtitle mb-2 post-subtitle">
                     <h5>Luis Manuel Ramirez Vargas</h5>
                     <span>{date}</span>
                     {post.frontmatter.codeLink && (
