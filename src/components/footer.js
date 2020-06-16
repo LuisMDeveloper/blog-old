@@ -23,7 +23,7 @@ const Footer = () => {
   return <footer id="footer">
     <div className="container">
       <div className="row">
-        <div className="col-3">
+        <div className="col-lg-3 col-md-12">
           <div className="d-flex justify-content-center">
             <Img fixed={data.profilePic.childImageSharp.fixed} className="img-thumbnail rounded-circle"/>
           </div>
@@ -32,7 +32,7 @@ const Footer = () => {
             <a href="https://github.com/LuisMDeveloper"><i className="fab fa-github fa-2x"/></a>
           </div>
         </div>
-        <div className="col-9">
+        <div className="col-lg-9 col-md-12">
           <h2>{data.site.siteMetadata.author}</h2>
           <h4 className="muted">iOS Developer</h4>
           <p>Results-oriented software developer and research professional with seven years experience in both
